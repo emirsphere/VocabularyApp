@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Vocabulary.Application.Services;
+using Vocabulary.Domain.Enums;
 
 namespace Vocabulary.Api.Controllers;
 
@@ -17,10 +18,12 @@ public class QuestionsController : ControllerBase
     [HttpGet("next")]
     public async Task<IActionResult> GetNextQuestion(
         [FromQuery] Guid userId,
+        [FromQuery] Level level,
         CancellationToken cancellationToken)
     {
         var question = await _questionService.GetNextQuestionAsync(
             userId,
+            level,
             cancellationToken);
 
         if (question is null)

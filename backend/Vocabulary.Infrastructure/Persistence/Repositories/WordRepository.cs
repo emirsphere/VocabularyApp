@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Vocabulary.Application.Abstractions.Persistence;
 using Vocabulary.Domain.Entities;
+using Vocabulary.Domain.Enums;
 using Vocabulary.Infrastructure.Persistence.Context;
 
 namespace Vocabulary.Infrastructure.Persistence.Repositories;
@@ -21,6 +22,17 @@ public class WordRepository : IWordRepository
             .AsNoTracking()
             .Include(x => x.Meanings)
             .OrderBy(x => x.Text)
+            .ToListAsync(cancellationToken);
+    }
+
+    public Task<List<WordMeaning>> GetMeaningsByLevelAsync(
+        Level level,
+        CancellationToken cancellationToken = default)
+    {
+        return _context.WordMeanings
+            .AsNoTracking()
+            .Include(x => x.Word)
+            .Where(x => x.Level == level)
             .ToListAsync(cancellationToken);
     }
 }

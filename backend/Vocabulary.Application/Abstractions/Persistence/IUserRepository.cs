@@ -1,4 +1,5 @@
 using Vocabulary.Domain.Entities;
+using Vocabulary.Domain.Enums;
 
 namespace Vocabulary.Application.Abstractions.Persistence;
 
@@ -14,5 +15,14 @@ public interface IUserRepository
 
     Task AddAsync(
         User user,
+        CancellationToken cancellationToken = default);
+
+    Task<UserLevelProgress?> GetLevelProgressAsync(
+        Guid userId,
+        Level level,
+        CancellationToken cancellationToken = default);
+
+    Task AddLevelProgressAsync(
+        UserLevelProgress progress,
         CancellationToken cancellationToken = default);
 }

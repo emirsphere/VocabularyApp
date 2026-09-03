@@ -16,6 +16,8 @@ builder.Services.AddDbContext<VocabularyDbContext>(options =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserMeaningProgressRepository, UserMeaningProgressRepository>();
+builder.Services.AddScoped<IUserQuestionProgressRepository, UserQuestionProgressRepository>();
 builder.Services.AddScoped<VocabularySeedService>();
 builder.Services.AddScoped<IWordRepository, WordRepository>();
 builder.Services.AddScoped<IWordService, WordService>();

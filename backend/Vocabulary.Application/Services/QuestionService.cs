@@ -1,5 +1,6 @@
 using Vocabulary.Application.Abstractions.Persistence;
 using Vocabulary.Application.DTOs;
+using Vocabulary.Domain.Entities;
 using Vocabulary.Domain.Enums;
 
 namespace Vocabulary.Application.Services;
@@ -7,52 +8,95 @@ namespace Vocabulary.Application.Services;
 public class QuestionService : IQuestionService
 {
     private readonly IWordRepository _wordRepository;
+    private readonly IUserMeaningProgressRepository _meaningProgressRepository;
 
-    public QuestionService(IWordRepository wordRepository)
+    public QuestionService(
+        IWordRepository wordRepository,
+        IUserMeaningProgressRepository meaningProgressRepository)
     {
         _wordRepository = wordRepository;
+        _meaningProgressRepository = meaningProgressRepository;
     }
 
     public async Task<QuestionDto?> GetNextQuestionAsync(
         Guid userId,
+        Level level,
         CancellationToken cancellationToken = default)
     {
-        var words = await _wordRepository.GetAllAsync(cancellationToken);
+        var meanings = await _wordRepository
+            .GetMeaningsByLevelAsync(level, cancellationToken);
 
-        var a1Meanings = words
-            .SelectMany(x => x.Meanings)
-            .Where(x => x.Level == Level.A1)
-            .ToList();
-
-        if (a1Meanings.Count == 0)
+        if (meanings.Count == 0)
         {
             return null;
         }
 
-        var meaning = a1Meanings[
-            Random.Shared.Next(a1Meanings.Count)
-        ];
+        var progresses = await _meaningProgressRepository
+            .GetMeaningProgressesByLevelAsync(
+                userId,
+                level,
+                cancellationToken);
+
+        var progressByMeaningId = progresses.ToDictionary(x => x.WordMeaningId);
+        var meaning = SelectWeightedMeaning(meanings, progressByMeaningId);
 
         var questionType = GetRandomQuestionType();
-
-        var word = words.First(x =>
-            x.Meanings.Any(m => m.Id == meaning.Id));
 
         return new QuestionDto
         {
             QuestionId = Guid.NewGuid(),
             WordMeaningId = meaning.Id,
-            Word = word.Text,
+            Word = meaning.Word.Text,
             Level = meaning.Level,
             PartOfSpeech = meaning.PartOfSpeech,
             QuestionType = questionType,
             Prompt = BuildPrompt(
-                word.Text,
+                meaning.Word.Text,
                 meaning.PartOfSpeech,
                 questionType,
                 meaning.TurkishMeaning),
-            ImageUrl = word.ImageUrl
+            ImageUrl = meaning.Word.ImageUrl
         };
+    }
+
+    private static WordMeaning SelectWeightedMeaning(
+        List<WordMeaning> meanings,
+        IReadOnlyDictionary<Guid, UserMeaningProgress> progressByMeaningId)
+    {
+        var weightedMeanings = meanings
+            .Select(meaning => new
+            {
+                Meaning = meaning,
+                Weight = progressByMeaningId.TryGetValue(meaning.Id, out var progress)
+                    ? progress.Weight
+                    : 1.0
+            })
+            .Where(x => double.IsFinite(x.Weight) && x.Weight > 0)
+            .ToList();
+
+        var totalWeight = weightedMeanings.Sum(x => x.Weight);
+
+        if (weightedMeanings.Count == 0 ||
+            !double.IsFinite(totalWeight) ||
+            totalWeight <= 0)
+        {
+            return meanings[Random.Shared.Next(meanings.Count)];
+        }
+
+        var selectedWeight = Random.Shared.NextDouble() * totalWeight;
+        var cumulativeWeight = 0.0;
+
+        foreach (var weightedMeaning in weightedMeanings)
+        {
+            cumulativeWeight += weightedMeaning.Weight;
+
+            if (selectedWeight < cumulativeWeight)
+            {
+                return weightedMeaning.Meaning;
+            }
+        }
+
+        return weightedMeanings[^1].Meaning;
     }
 
     private static QuestionType GetRandomQuestionType()
