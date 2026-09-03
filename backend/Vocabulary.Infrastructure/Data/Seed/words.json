@@ -1,0 +1,38 @@
+[
+  {
+    "text": "act",
+    "imageUrl": null,
+    "meanings": [
+      {
+        "level": "A2",
+        "order": 1,
+        "partOfSpeech": "v.",
+        "turkishMeaning": "davranmak, hareket etmek"
+      },
+      {
+        "level": "B1",
+        "order": 1,
+        "partOfSpeech": "n.",
+        "turkishMeaning": "eylem, hareket"
+      }
+    ]
+  },
+  {
+    "text": "address",
+    "imageUrl": null,
+    "meanings": [
+      {
+        "level": "A1",
+        "order": 2,
+        "partOfSpeech": "n.",
+        "turkishMeaning": "adres"
+      },
+      {
+        "level": "B2",
+        "order": 2,
+        "partOfSpeech": "v.",
+        "turkishMeaning": "ele almak, hitap etmek"
+      }
+    ]
+  }
+]

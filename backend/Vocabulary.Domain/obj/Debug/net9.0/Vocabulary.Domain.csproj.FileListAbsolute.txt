@@ -1,0 +1,11 @@
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\bin\Debug\net9.0\Vocabulary.Domain.deps.json
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\bin\Debug\net9.0\Vocabulary.Domain.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\bin\Debug\net9.0\Vocabulary.Domain.pdb
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\obj\Debug\net9.0\Vocabulary.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\obj\Debug\net9.0\Vocabulary.Domain.AssemblyInfoInputs.cache
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\obj\Debug\net9.0\Vocabulary.Domain.AssemblyInfo.cs
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\obj\Debug\net9.0\Vocabulary.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\obj\Debug\net9.0\Vocabulary.Domain.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\obj\Debug\net9.0\refint\Vocabulary.Domain.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\obj\Debug\net9.0\Vocabulary.Domain.pdb
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Domain\obj\Debug\net9.0\ref\Vocabulary.Domain.dll

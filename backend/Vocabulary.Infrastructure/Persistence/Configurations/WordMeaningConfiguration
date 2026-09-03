@@ -1,0 +1,44 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Vocabulary.Domain.Entities;
+
+namespace Vocabulary.Infrastructure.Persistence.Configurations;
+
+public class WordMeaningConfiguration
+    : IEntityTypeConfiguration<WordMeaning>
+{
+    public void Configure(EntityTypeBuilder<WordMeaning> builder)
+    {
+        builder.ToTable("WordMeanings");
+
+        builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.Level)
+            .IsRequired();
+
+        builder.Property(x => x.Order)
+            .IsRequired();
+
+        builder.Property(x => x.PartOfSpeech)
+            .IsRequired()
+            .HasMaxLength(50);
+
+        builder.Property(x => x.TurkishMeaning)
+            .IsRequired()
+            .HasMaxLength(500);
+
+        builder.Property(x => x.ExampleSentence)
+            .HasMaxLength(500);
+
+        builder.HasIndex(x => new
+        {
+            x.Level,
+            x.Order
+        }).IsUnique();
+
+        builder.HasOne(x => x.Word)
+            .WithMany(x => x.Meanings)
+            .HasForeignKey(x => x.WordId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
+}

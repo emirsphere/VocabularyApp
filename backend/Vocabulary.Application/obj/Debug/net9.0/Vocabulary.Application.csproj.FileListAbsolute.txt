@@ -1,0 +1,15 @@
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\bin\Debug\net9.0\Vocabulary.Application.deps.json
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\bin\Debug\net9.0\Vocabulary.Application.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\bin\Debug\net9.0\Vocabulary.Application.pdb
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\bin\Debug\net9.0\Vocabulary.Domain.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\bin\Debug\net9.0\Vocabulary.Domain.pdb
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabulary.Application.csproj.AssemblyReference.cache
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabulary.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabulary.Application.AssemblyInfoInputs.cache
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabulary.Application.AssemblyInfo.cs
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabulary.Application.csproj.CoreCompileInputs.cache
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabula.C9AC1030.Up2Date
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabulary.Application.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\refint\Vocabulary.Application.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabulary.Application.pdb
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\ref\Vocabulary.Application.dll
