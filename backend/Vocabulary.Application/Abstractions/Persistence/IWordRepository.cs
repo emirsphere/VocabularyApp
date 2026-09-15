@@ -10,4 +10,8 @@ public interface IWordRepository
     Task<List<WordMeaning>> GetMeaningsByLevelAsync(
         Level level,
         CancellationToken cancellationToken = default);
+
+    Task<WordMeaning?> GetMeaningByIdAsync(
+        Guid id,
+        CancellationToken cancellationToken = default);
 }

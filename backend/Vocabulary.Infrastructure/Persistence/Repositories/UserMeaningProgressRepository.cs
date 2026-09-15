@@ -36,6 +36,15 @@ public class UserMeaningProgressRepository : IUserMeaningProgressRepository
             .ToListAsync(cancellationToken);
     }
 
+    public Task<List<UserMeaningProgress>> GetMeaningProgressesAsync(
+        Guid userId,
+        CancellationToken cancellationToken = default)
+    {
+        return _context.UserMeaningProgresses
+            .Where(x => x.UserId == userId)
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task AddMeaningProgressAsync(
         UserMeaningProgress progress,
         CancellationToken cancellationToken = default)

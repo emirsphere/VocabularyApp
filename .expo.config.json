@@ -1,0 +1,9 @@
+{
+  "projects": [
+    {
+      "name": "frontend",
+      "root": "./frontend",
+      "isMonorepo": false
+    }
+  ]
+}

@@ -7,10 +7,14 @@ namespace Vocabulary.Application.Services;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IUserMeaningProgressRepository _meaningProgressRepository;
 
-    public UserService(IUserRepository userRepository)
+    public UserService(
+        IUserRepository userRepository,
+        IUserMeaningProgressRepository meaningProgressRepository)
     {
         _userRepository = userRepository;
+        _meaningProgressRepository = meaningProgressRepository;
     }
 
     public async Task<UserDto> GetOrCreateAsync(
@@ -47,6 +51,28 @@ public class UserService : IUserService
             .GetByIdAsync(id, cancellationToken);
 
         return user is null ? null : MapToDto(user);
+    }
+
+    public async Task<UserStatisticsDto?> GetStatisticsAsync(
+        Guid userId,
+        CancellationToken cancellationToken = default)
+    {
+        var user = await _userRepository.GetByIdAsync(userId, cancellationToken);
+
+        if (user is null)
+        {
+            return null;
+        }
+
+        var meaningProgresses = await _meaningProgressRepository
+            .GetMeaningProgressesAsync(userId, cancellationToken);
+
+        return new UserStatisticsDto
+        {
+            TotalLearnedMeanings = meaningProgresses.Count(x => x.IsLearned),
+            TotalCorrectAnswers = meaningProgresses.Sum(x => x.CorrectCount),
+            TotalWrongAnswers = meaningProgresses.Sum(x => x.WrongCount)
+        };
     }
 
     private static UserDto MapToDto(User user)

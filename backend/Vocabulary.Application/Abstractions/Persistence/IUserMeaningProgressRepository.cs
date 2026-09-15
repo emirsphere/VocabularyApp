@@ -15,6 +15,10 @@ public interface IUserMeaningProgressRepository
         Level level,
         CancellationToken cancellationToken = default);
 
+    Task<List<UserMeaningProgress>> GetMeaningProgressesAsync(
+        Guid userId,
+        CancellationToken cancellationToken = default);
+
     Task AddMeaningProgressAsync(
         UserMeaningProgress progress,
         CancellationToken cancellationToken = default);

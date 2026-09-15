@@ -57,6 +57,7 @@ public class UserRepository : IUserRepository
         CancellationToken cancellationToken = default)
     {
         await _context.UserLevelProgresses.AddAsync(progress, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
 }

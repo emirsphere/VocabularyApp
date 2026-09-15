@@ -48,4 +48,16 @@ public class UsersController : ControllerBase
 
         return Ok(user);
     }
+
+    [HttpGet("{userId:guid}/stats")]
+    public async Task<IActionResult> GetStatistics(
+        Guid userId,
+        CancellationToken cancellationToken)
+    {
+        var statistics = await _userService.GetStatisticsAsync(
+            userId,
+            cancellationToken);
+
+        return statistics is null ? NotFound() : Ok(statistics);
+    }
 }

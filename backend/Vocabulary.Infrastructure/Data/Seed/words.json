@@ -1,38 +1,57 @@
 [
+  { "text": "a, an", "imageUrl": null, "meanings": [{ "level": "A1", "order": 1, "partOfSpeech": "article", "turkishMeaning": "bir" }] },
+  { "text": "abandon", "imageUrl": null, "meanings": [{ "level": "B2", "order": 1, "partOfSpeech": "v.", "turkishMeaning": "terk etmek" }] },
+  { "text": "ability", "imageUrl": null, "meanings": [{ "level": "A2", "order": 1, "partOfSpeech": "n.", "turkishMeaning": "yetenek, beceri" }] },
+  { "text": "able", "imageUrl": null, "meanings": [{ "level": "A2", "order": 2, "partOfSpeech": "adj.", "turkishMeaning": "yapabilen, muktedir" }] },
   {
-    "text": "act",
+    "text": "about",
     "imageUrl": null,
     "meanings": [
-      {
-        "level": "A2",
-        "order": 1,
-        "partOfSpeech": "v.",
-        "turkishMeaning": "davranmak, hareket etmek"
-      },
-      {
-        "level": "B1",
-        "order": 1,
-        "partOfSpeech": "n.",
-        "turkishMeaning": "eylem, hareket"
-      }
+      { "level": "A1", "order": 2, "partOfSpeech": "prep.", "turkishMeaning": "hakkında" },
+      { "level": "A1", "order": 3, "partOfSpeech": "adv.", "turkishMeaning": "yaklaşık olarak" }
     ]
   },
   {
-    "text": "address",
+    "text": "above",
     "imageUrl": null,
     "meanings": [
-      {
-        "level": "A1",
-        "order": 2,
-        "partOfSpeech": "n.",
-        "turkishMeaning": "adres"
-      },
-      {
-        "level": "B2",
-        "order": 2,
-        "partOfSpeech": "v.",
-        "turkishMeaning": "ele almak, hitap etmek"
-      }
+      { "level": "A1", "order": 4, "partOfSpeech": "prep.", "turkishMeaning": "üstünde" },
+      { "level": "A1", "order": 5, "partOfSpeech": "adv.", "turkishMeaning": "yukarıda" }
     ]
-  }
+  },
+  { "text": "abroad", "imageUrl": null, "meanings": [{ "level": "A2", "order": 3, "partOfSpeech": "adv.", "turkishMeaning": "yurt dışında" }] },
+  { "text": "absolute", "imageUrl": null, "meanings": [{ "level": "B2", "order": 2, "partOfSpeech": "adj.", "turkishMeaning": "mutlak, kesin" }] },
+  { "text": "absolutely", "imageUrl": null, "meanings": [{ "level": "B1", "order": 1, "partOfSpeech": "adv.", "turkishMeaning": "kesinlikle, tamamen" }] },
+  {
+    "text": "academic",
+    "imageUrl": null,
+    "meanings": [
+      { "level": "B1", "order": 2, "partOfSpeech": "adj.", "turkishMeaning": "akademik" },
+      { "level": "B2", "order": 3, "partOfSpeech": "n.", "turkishMeaning": "akademisyen" }
+    ]
+  },
+  { "text": "accept", "imageUrl": null, "meanings": [{ "level": "A2", "order": 4, "partOfSpeech": "v.", "turkishMeaning": "kabul etmek" }] },
+  { "text": "acceptable", "imageUrl": null, "meanings": [{ "level": "B2", "order": 4, "partOfSpeech": "adj.", "turkishMeaning": "kabul edilebilir" }] },
+  {
+    "text": "access",
+    "imageUrl": null,
+    "meanings": [
+      { "level": "B1", "order": 3, "partOfSpeech": "n.", "turkishMeaning": "erişim" },
+      { "level": "B2", "order": 5, "partOfSpeech": "v.", "turkishMeaning": "erişmek, ulaşmak" }
+    ]
+  },
+  { "text": "accident", "imageUrl": null, "meanings": [{ "level": "A2", "order": 5, "partOfSpeech": "n.", "turkishMeaning": "kaza" }] },
+  { "text": "accommodation", "imageUrl": null, "meanings": [{ "level": "B1", "order": 4, "partOfSpeech": "n.", "turkishMeaning": "konaklama, kalacak yer" }] },
+  { "text": "accompany", "imageUrl": null, "meanings": [{ "level": "B2", "order": 6, "partOfSpeech": "v.", "turkishMeaning": "eşlik etmek" }] },
+  { "text": "according to", "imageUrl": null, "meanings": [{ "level": "A2", "order": 6, "partOfSpeech": "prep.", "turkishMeaning": "-e göre" }] },
+  {
+    "text": "account",
+    "imageUrl": null,
+    "meanings": [
+      { "level": "B1", "order": 5, "partOfSpeech": "n.", "turkishMeaning": "hesap" },
+      { "level": "B2", "order": 7, "partOfSpeech": "v.", "turkishMeaning": "açıklamak, hesaba katmak" }
+    ]
+  },
+  { "text": "accurate", "imageUrl": null, "meanings": [{ "level": "B2", "order": 8, "partOfSpeech": "adj.", "turkishMeaning": "doğru, kesin" }] },
+  { "text": "accuse", "imageUrl": null, "meanings": [{ "level": "B2", "order": 9, "partOfSpeech": "v.", "turkishMeaning": "suçlamak" }] }
 ]

@@ -13,3 +13,4 @@ C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabu
 C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\refint\Vocabulary.Application.dll
 C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabulary.Application.pdb
 C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\ref\Vocabulary.Application.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Application\obj\Debug\net9.0\Vocabulary.Application.sourcelink.json

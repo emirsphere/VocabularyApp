@@ -18,11 +18,6 @@ public class VocabularySeedService
 
     public async Task SeedAsync()
     {
-        if (await _context.Words.AnyAsync())
-        {
-            return;
-        }
-
         var filePath = Path.Combine(
             AppContext.BaseDirectory,
             "Data",
@@ -54,30 +49,78 @@ public class VocabularySeedService
             return;
         }
 
+        // Get existing words to avoid duplicates
+        var existingWords = await _context.Words
+            .Include(w => w.Meanings)
+            .ToDictionaryAsync(w => w.Text.ToLower());
+
+        var wordsToAdd = new List<Word>();
+        var changesDetected = false;
+
         foreach (var seedWord in seedWords)
         {
-            var word = new Word
-            {
-                Id = Guid.NewGuid(),
-                Text = seedWord.Text,
-                ImageUrl = seedWord.ImageUrl
-            };
+            var seedWordKeyLower = seedWord.Text.ToLower();
 
-            foreach (var seedMeaning in seedWord.Meanings)
+            if (existingWords.TryGetValue(seedWordKeyLower, out var existingWord))
             {
-                word.Meanings.Add(new WordMeaning
+                // Word exists - check if all meanings exist
+                var existingMeaningSet = existingWord.Meanings
+                    .ToDictionary(m => (m.Level, m.PartOfSpeech, m.TurkishMeaning.ToLower()));
+
+                foreach (var seedMeaning in seedWord.Meanings)
+                {
+                    var meaningKey = (seedMeaning.Level, seedMeaning.PartOfSpeech, seedMeaning.TurkishMeaning.ToLower());
+
+                    // Only add if this exact meaning doesn't exist
+                    if (!existingMeaningSet.ContainsKey(meaningKey))
+                    {
+                        existingWord.Meanings.Add(new WordMeaning
+                        {
+                            Id = Guid.NewGuid(),
+                            Level = seedMeaning.Level,
+                            Order = seedMeaning.Order,
+                            PartOfSpeech = seedMeaning.PartOfSpeech,
+                            TurkishMeaning = seedMeaning.TurkishMeaning
+                        });
+                        changesDetected = true;
+                    }
+                }
+            }
+            else
+            {
+                // Word doesn't exist - create new word with meanings
+                var word = new Word
                 {
                     Id = Guid.NewGuid(),
-                    Level = seedMeaning.Level,
-                    Order = seedMeaning.Order,
-                    PartOfSpeech = seedMeaning.PartOfSpeech,
-                    TurkishMeaning = seedMeaning.TurkishMeaning
-                });
-            }
+                    Text = seedWord.Text,
+                    ImageUrl = seedWord.ImageUrl
+                };
 
-            _context.Words.Add(word);
+                foreach (var seedMeaning in seedWord.Meanings)
+                {
+                    word.Meanings.Add(new WordMeaning
+                    {
+                        Id = Guid.NewGuid(),
+                        Level = seedMeaning.Level,
+                        Order = seedMeaning.Order,
+                        PartOfSpeech = seedMeaning.PartOfSpeech,
+                        TurkishMeaning = seedMeaning.TurkishMeaning
+                    });
+                }
+
+                wordsToAdd.Add(word);
+                changesDetected = true;
+            }
         }
 
-        await _context.SaveChangesAsync();
+        if (wordsToAdd.Count > 0 || changesDetected)
+        {
+            if (wordsToAdd.Count > 0)
+            {
+                _context.Words.AddRange(wordsToAdd);
+            }
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

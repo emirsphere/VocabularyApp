@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Vocabulary.Application.DTOs;
 using Vocabulary.Application.Services;
 using Vocabulary.Domain.Enums;
 
@@ -21,16 +22,52 @@ public class QuestionsController : ControllerBase
         [FromQuery] Level level,
         CancellationToken cancellationToken)
     {
-        var question = await _questionService.GetNextQuestionAsync(
-            userId,
-            level,
-            cancellationToken);
-
-        if (question is null)
+        try
         {
-            return NotFound("No questions available.");
-        }
+            var question = await _questionService.GetNextQuestionAsync(
+                userId,
+                level,
+                cancellationToken);
 
-        return Ok(question);
+            if (question is null)
+            {
+                return NotFound("No questions available.");
+            }
+
+            return Ok(question);
+        }
+        catch (KeyNotFoundException exception)
+        {
+            return NotFound(exception.Message);
+        }
+        catch (InvalidOperationException exception)
+        {
+            return StatusCode(
+                StatusCodes.Status423Locked,
+                new { message = exception.Message });
+        }
+    }
+
+    [HttpPost("answer")]
+    public async Task<IActionResult> SubmitAnswer(
+        [FromBody] SubmitAnswerRequest request,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            var response = await _questionService.SubmitAnswerAsync(
+                request,
+                cancellationToken);
+
+            return Ok(response);
+        }
+        catch (ArgumentException exception)
+        {
+            return BadRequest(exception.Message);
+        }
+        catch (KeyNotFoundException exception)
+        {
+            return NotFound(exception.Message);
+        }
     }
 }

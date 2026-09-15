@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 using Vocabulary.Infrastructure.Persistence.Context;
 using Vocabulary.Infrastructure.Data.Seed;
 using Vocabulary.Application.Abstractions.Persistence;
@@ -22,7 +23,11 @@ builder.Services.AddScoped<VocabularySeedService>();
 builder.Services.AddScoped<IWordRepository, WordRepository>();
 builder.Services.AddScoped<IWordService, WordService>();
 builder.Services.AddScoped<IQuestionService, QuestionService>();
-builder.Services.AddControllers();
+builder.Services.AddScoped<ILevelProgressService, LevelProgressService>();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(
+            new JsonStringEnumConverter()));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

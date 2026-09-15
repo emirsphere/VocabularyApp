@@ -35,4 +35,13 @@ public class WordRepository : IWordRepository
             .Where(x => x.Level == level)
             .ToListAsync(cancellationToken);
     }
+
+    public Task<WordMeaning?> GetMeaningByIdAsync(
+        Guid id,
+        CancellationToken cancellationToken = default)
+    {
+        return _context.WordMeanings
+            .Include(x => x.Word)
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+    }
 }

@@ -18,3 +18,4 @@ C:\Users\pc\VocabularyApp\backend\Vocabulary.Infrastructure\obj\Debug\net9.0\ref
 C:\Users\pc\VocabularyApp\backend\Vocabulary.Infrastructure\obj\Debug\net9.0\Vocabulary.Infrastructure.pdb
 C:\Users\pc\VocabularyApp\backend\Vocabulary.Infrastructure\obj\Debug\net9.0\Vocabulary.Infrastructure.genruntimeconfig.cache
 C:\Users\pc\VocabularyApp\backend\Vocabulary.Infrastructure\obj\Debug\net9.0\ref\Vocabulary.Infrastructure.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Infrastructure\obj\Debug\net9.0\Vocabulary.Infrastructure.sourcelink.json

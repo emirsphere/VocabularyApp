@@ -11,4 +11,8 @@ public interface IUserService
     Task<UserDto?> GetByIdAsync(
         Guid id,
         CancellationToken cancellationToken = default);
+
+    Task<UserStatisticsDto?> GetStatisticsAsync(
+        Guid userId,
+        CancellationToken cancellationToken = default);
 }

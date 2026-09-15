@@ -171,3 +171,4 @@ C:\Users\pc\VocabularyApp\backend\Vocabulary.Api\obj\Debug\net9.0\refint\Vocabul
 C:\Users\pc\VocabularyApp\backend\Vocabulary.Api\obj\Debug\net9.0\Vocabulary.Api.pdb
 C:\Users\pc\VocabularyApp\backend\Vocabulary.Api\obj\Debug\net9.0\Vocabulary.Api.genruntimeconfig.cache
 C:\Users\pc\VocabularyApp\backend\Vocabulary.Api\obj\Debug\net9.0\ref\Vocabulary.Api.dll
+C:\Users\pc\VocabularyApp\backend\Vocabulary.Api\obj\Debug\net9.0\Vocabulary.Api.sourcelink.json

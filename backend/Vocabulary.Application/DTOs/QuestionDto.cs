@@ -19,4 +19,6 @@ public class QuestionDto
     public string Prompt { get; set; } = null!;
 
     public string? ImageUrl { get; set; }
+
+    public List<string> Options { get; set; } = [];
 }
